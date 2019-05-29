@@ -80,7 +80,12 @@ class Ui_root(object):
             sock.close()
 
     def disconnetti(self):
-        pass
+        if hasattr(self, 'sock'):
+            self.sock.close()
+            self.__delattr__('sock')
+            self.textBrowser.append("Disconnessione dal Server avvenuta")
+        else:
+            self.textBrowser.append("Nessun Server ancora connesso")
 
     def esci(self):
         if hasattr(self, 'sock'):
