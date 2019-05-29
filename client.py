@@ -74,7 +74,9 @@ class Ui_root(object):
         pass
 
     def esci(self):
-        pass
+        if hasattr(self, 'sock'):
+            self.sock.close()
+        sys.exit(0)
 
     def getText(self):
         pass
