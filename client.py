@@ -70,6 +70,7 @@ class Ui_root(object):
     def connetti(self):
         try:
             sock = socket.socket()
+            # Qui va inserito l'IP del Server e la porta sulla quale il Server é in ascolto
             sock.connect(("localhost", 15000))
             self.textBrowser.append(
                 f"La connessione al Server: avvenuta con successo")
