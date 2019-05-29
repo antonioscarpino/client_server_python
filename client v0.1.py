@@ -1,12 +1,15 @@
-import subprocess
-import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+import socket
+import sys
+import subprocess
+import platform
 
 
 class Ui_root(object):
     def setupUi(self, root):
         root.setObjectName("root")
         root.setEnabled(True)
+        root.resize(1050, 600)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -22,6 +25,9 @@ class Ui_root(object):
         self.Button1.setObjectName("Button1")
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser.setGeometry(QtCore.QRect(25, 10, 1001, 430))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        self.textBrowser.setFont(font)
         self.textBrowser.setObjectName("textBrowser")
         self.comando = QtWidgets.QLineEdit(self.centralwidget)
         self.comando.setGeometry(QtCore.QRect(160, 510, 431, 31))
@@ -29,29 +35,49 @@ class Ui_root(object):
         self.label1 = QtWidgets.QLabel(self.centralwidget)
         self.label1.setGeometry(QtCore.QRect(30, 515, 121, 21))
         self.label1.setObjectName("label1")
+        self.Button2 = QtWidgets.QPushButton(self.centralwidget)
+        self.Button2.setGeometry(QtCore.QRect(770, 500, 120, 45))
+        self.Button2.setMinimumSize(QtCore.QSize(111, 0))
+        self.Button2.setObjectName("Button2")
+        self.Button3 = QtWidgets.QPushButton(self.centralwidget)
+        self.Button3.setGeometry(QtCore.QRect(910, 500, 120, 45))
+        self.Button3.setMinimumSize(QtCore.QSize(111, 0))
+        self.Button3.setObjectName("Button3")
+        self.autore = QtWidgets.QLabel(self.centralwidget)
+        self.autore.setGeometry(QtCore.QRect(900, 570, 130, 16))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.autore.setFont(font)
+        self.autore.setObjectName("autore")
         root.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(root)
+        self.Button1.clicked.connect(self.connetti)
+        self.Button2.clicked.connect(self.disconnetti)
+        self.Button3.clicked.connect(self.esci)
         self.comando.returnPressed.connect(self.getText)
-        QtCore.QMetaObject.connectSlotsByName(self.textBrowser)
+        QtCore.QMetaObject.connectSlotsByName(root)
 
     def retranslateUi(self, root):
         _translate = QtCore.QCoreApplication.translate
         root.setWindowTitle(_translate("root", "Prova Applicazione Qt5"))
         self.Button1.setText(_translate("root", "Connetti al Server"))
         self.label1.setText(_translate("root", "Inserisci un comando"))
+        self.Button2.setText(_translate("root", "Disconnetti il Server"))
+        self.Button3.setText(_translate("root", "ESCI"))
+        self.autore.setText(_translate("root", "Creato by Antonio Scarpino"))
+
+    def connetti(self):
+        pass
+
+    def disconnetti(self):
+        pass
+
+    def esci(self):
+        pass
 
     def getText(self):
-        cmd = self.comando.text()
-        if cmd == "exit":
-            sys.exit(0)
-        else:
-            text = subprocess.run(
-                cmd, shell=True, stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE, encoding="UTF-8")
-            self.textBrowser.append(
-                "Comando Richiesto -> " + cmd + "\n\n" + text.stdout + text.stderr)
-            self.comando.clear()
+        pass
 
 
 if __name__ == "__main__":
