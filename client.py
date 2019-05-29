@@ -68,7 +68,16 @@ class Ui_root(object):
         self.autore.setText(_translate("root", "Creato by Antonio Scarpino"))
 
     def connetti(self):
-        pass
+        try:
+            sock = socket.socket()
+            sock.connect(("localhost", 15000))
+            self.textBrowser.append(
+                f"La connessione al Server: avvenuta con successo")
+            self.sock = sock
+        except socket.error as error:
+            errore = (f"Connessione al Server non stabilita!! ERRORE: {error}")
+            self.textBrowser.append(errore)
+            sock.close()
 
     def disconnetti(self):
         pass
