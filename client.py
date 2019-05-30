@@ -94,7 +94,30 @@ class Ui_root(object):
         sys.exit(0)
 
     def getText(self):
-        pass
+        cmd = self.comando.text()
+        # print(cmd) # debug comando digitato
+        if cmd == "exit":
+            self.sock.close()
+            sys.exit(0)
+        elif cmd != "":
+            if hasattr(self, 'sock'):
+                self.sock.send(cmd.encode())
+                data = self.sock.recv(4096)
+                if platform.system() == "Linux":
+                    self.textBrowser.append(
+                        "Comando Richiesto -> " + cmd + "\n\n" + str(data, 'UTF-8'))
+                    self.comando.clear()
+                else:
+                    self.textBrowser.append(
+                        "Comando Richiesto -> " + cmd + "\n\n" + str(data, 'cp437'))
+                    self.comando.clear()
+            else:
+                self.textBrowser.append(
+                    "Non sei connesso ancora a nessun Server")
+        else:
+            self.textBrowser.append(
+                "Inserisci un comando valido")
+            self.comando.clear()
 
 
 if __name__ == "__main__":
