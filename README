@@ -7,3 +7,13 @@ Non volendo iniziare a testare client su client giá presenti in rete, ho deciso
 crearne uno da zero.
 In un primo momento avevo pensato di utilizzare la libreria grafica Tk, ma poi dopo
 varie prove che non mi convincevano, ho deciso di puntare alle librerie grafiche QT5.
+
+REQUISITI
+
+Python ver. 3.7.3
+Librerie grafiche QT5
+
+INSTALLAZIONE LIBRERIE GRAFICHE QT5
+
+Per l'installazione delle librerie grafiche QT5 vi rimando alle molteplici guide
+presenti sul web per tutti i sistemi operativi.
