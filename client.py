@@ -60,7 +60,7 @@ class Ui_root(object):
 
     def retranslateUi(self, root):
         _translate = QtCore.QCoreApplication.translate
-        root.setWindowTitle(_translate("root", "Prova Applicazione Qt5"))
+        root.setWindowTitle(_translate("root", "Client Python & Qt5"))
         self.Button1.setText(_translate("root", "Connetti al Server"))
         self.label1.setText(_translate("root", "Inserisci un comando"))
         self.Button2.setText(_translate("root", "Disconnetti il Server"))
