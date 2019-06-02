@@ -2,7 +2,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import socket
 import sys
 import subprocess
-import platform
 
 
 class Ui_root(object):
@@ -103,7 +102,7 @@ class Ui_root(object):
             if hasattr(self, 'sock'):
                 self.sock.send(cmd.encode())
                 data = self.sock.recv(4096)
-                if platform.system() == "Linux":
+                if sys.platform == "linux":
                     self.textBrowser.append(
                         "Comando Richiesto -> " + cmd + "\n\n" + str(data, 'UTF-8'))
                     self.comando.clear()
